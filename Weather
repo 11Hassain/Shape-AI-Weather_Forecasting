@@ -1,10 +1,9 @@
 import requests
 
 city_name = input("Enter your city name: ")   # Taking city name from the user
-API_key = "86f4b579740493093a2c9c7de3b8ff7c"   # Confidential API Id
+API_key = "288f50a9c598ea809bd1fbcb906f0839"   # Confidential API Id
 
 req = requests.get('https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'.format(city_name, API_key))
-# print(req)
 
 req_data = req.json()
 
@@ -14,8 +13,6 @@ else:
     coordinates_of_location_longitude = req_data['coord']['lon']
     coordinates_of_location_latitude = req_data['coord']['lat']
     country = req_data['sys']['country']
-    s_rise = req_data['sys']['sunrise']
-    s_set = req_data['sys']['sunset']
     time_zone = req_data['timezone']
     min_temp = req_data['main']['temp_min'] - 273.15
     temp = req_data['main']['temp'] - 273.15
@@ -28,7 +25,7 @@ else:
 print()
 print()
 print('..............................................................................')
-print('>>>>>>>>>>....BELOW IS THE WEATHER REPORT OF THE CITY {}....<<<<<<<<<<<'.format(city_name))
+print('                   WEATHER REPORT OF THE CITY {}                '.format(city_name))
 print('..............................................................................')
 print()
 print('Co-ordinates: Longitude - {}'.format(coordinates_of_location_longitude))
@@ -36,40 +33,11 @@ print('              Latitude  - {}'.format(coordinates_of_location_latitude))
 print()
 print('Country: {}'.format(country))
 print()
-print('      SUN                \\      ')
-print('     /                    \\     ')
-print('    /                      \\    ')
-print('   /                        \\   ')
-print('  /                          \\  ')
-print(' /                            SUN')
-print('{}                    {}'.format(s_rise, s_set))
-print()
 print('Time Zone: {}\n'.format(time_zone))
-print('Minimum Temperature --> {:.2f}           {:.2f} <-- Maximum Temperature'.format(min_temp, max_temp))
-print()
-print('                                {:.2f}'.format(temp))
-print('                          Average Temperature\n')
+print('Minimum Temperature --> {:.2f}'.format(min_temp))
+print('Maximum Temperature --> {:.2f}'.format(max_temp))
+print('Average Temperature --> {:.2f}'.format(temp))
 print('Weather Description: {}\n'.format(weather_desc))
 print('Pressure: ', pressure)
 print('Humidity: ', humidity)
 print('Wind Speed: ', wind_speed)
-
-
-
-# {
-#     "coord": {"lon": -122.08, "lat": 37.39},
-#     "weather": [{"id": 800, "main": "Clear", "description": "clear sky", "icon": "01d"}],
-#     "base": "stations",
-#     "main": {"temp": 282.55, "feels_like": 281.86, "temp_min": 280.37,
-#               "temp_max": 284.26, "pressure": 1023, "humidity": 100},
-#     "visibility": 16093,
-#     "wind": {"speed": 1.5, "deg": 350},
-#     "clouds": {"all": 1},
-#     "dt": 1560350645,
-#     "sys": {"type": 1, "id": 5122, "message": 0.0139, "country": "US",
-#               "sunrise": 1560343627, "sunset": 1560396563},
-#     "timezone": -25200,
-#     "id": 420006353,
-#     "name": "Mountain View",
-#     "cod": 200
-# }
